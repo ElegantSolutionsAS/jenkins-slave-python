@@ -2,7 +2,7 @@ FROM openshift/jenkins-slave-base-centos7
 
 RUN yum makecache && \
     yum install -y epel-release && \
-    yum install -y python2-pip python-virtualenv gcc && \
+    yum install -y python2-pip python-virtualenv gcc mysql && \
     yum clean all -y
 
 RUN virtualenv $HOME/venv && \
@@ -14,5 +14,5 @@ ENV BASH_ENV $HOME/venv/bin/activate
 
 RUN chown -R 1001:0 $HOME && \
     chmod -R g+rw $HOME
-    
+
 USER 1001
